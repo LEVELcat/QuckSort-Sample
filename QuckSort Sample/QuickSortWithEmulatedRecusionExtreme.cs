@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,12 +36,13 @@ namespace QuckSort_Sample
             if (start >= end)
                 return;
 
-            RecursiveCell currentCell = new RecursiveCell() { Start = start, End = end, Stage = 2 };
-            RecursiveCell newCell;
+            RecursiveCell newCell = new RecursiveCell();
+            RecursiveCell currentCell = new RecursiveCell() { Start = start, End = end, Stage = 2, Parent = newCell };
+
 
             while (true)
             {
-                if (currentCell == null) break;
+                if (currentCell.Stage == 255) break;
 
                 if(currentCell.Stage == 2)
                 {
@@ -71,18 +73,27 @@ namespace QuckSort_Sample
                 }
 
                 if(currentCell.Stage == 0)
-                    currentCell = currentCell.Parent;
+                    currentCell = (RecursiveCell)currentCell.Parent;
             }
         }
 
-        class RecursiveCell
+        struct RecursiveCell
         {
             public int Start;
             public int End;
             public int Pivot;
             public byte Stage;
+            public object Parent;
 
-            public RecursiveCell Parent;
+            public RecursiveCell()
+            {
+                Start = -1;
+                End = -1;
+                Pivot = -1;
+                Stage = 255;
+
+                Parent = null;
+            }
         }
     }
 }
