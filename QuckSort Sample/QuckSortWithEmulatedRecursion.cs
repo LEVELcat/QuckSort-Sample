@@ -35,12 +35,12 @@ namespace QuckSort_Sample
             if (start >= end)
                 return;
 
-            List<RecursiveCell> stack = new List<RecursiveCell>();
+            RecursiveCell[] stack = new RecursiveCell[end];
             int pointer = 0;
             RecursiveCell currentCell = new RecursiveCell() { Start = start, End = end, Stage = 2};
             RecursiveCell newCell;
             
-            stack.Insert(pointer, currentCell);
+            stack[pointer] = currentCell;
 
             while (true)
             {
@@ -52,7 +52,6 @@ namespace QuckSort_Sample
                 switch (currentCell.Stage)
                 {
                     case 0:
-                        stack.RemoveAt(pointer);
                         pointer--;
                         break;
                     case 2:
@@ -66,7 +65,7 @@ namespace QuckSort_Sample
                         };
 
                         if (newCell.Start < newCell.End)
-                            stack.Insert(++pointer, newCell);
+                            stack[++pointer] = newCell;
 
                         break;
                     case 1:
@@ -79,7 +78,7 @@ namespace QuckSort_Sample
                         };
 
                         if (newCell.Start < newCell.End)
-                            stack.Insert(++pointer, newCell);
+                            stack[++pointer] = newCell;
 
                         break;
                 }
