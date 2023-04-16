@@ -22,6 +22,12 @@
 
             Console.WriteLine("Завершена успешно" + "\n");
 
+            Console.WriteLine("Сортировка через эмуляцию рекурсии (Односвязный список)");
+
+            QuickSortWithEmulatedRecusionExtreme.QuickSort(array, 0, array.Length - 1);
+
+            Console.WriteLine("Завершена успешно" + "\n");
+
             Console.WriteLine("Сортировка через рекурсию");
 
             array = new int[Count];
