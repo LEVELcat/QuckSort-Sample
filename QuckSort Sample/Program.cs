@@ -33,12 +33,6 @@
 
             QuickSortClass.Quicksort(array, 0, array.Length - 1);
 
-
-
-
-
-
-
             Console.WriteLine("АХАХАХАХ!!!");
 
             Console.ReadKey();
