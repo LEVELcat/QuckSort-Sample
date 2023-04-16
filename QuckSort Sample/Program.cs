@@ -4,49 +4,44 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Введите количество сортируемых чисел в массиве представленные в худшем варианте");
+            int Count = int.Parse(Console.ReadLine());
+            Console.WriteLine();
 
-            int[] array = new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            int[] array = new int[Count];
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                array[i] = array.Length - 1 - i;
+            }
+
+            Console.WriteLine("Сортировка через эмуляцию рекурсии");
+
+
+            QuckSortWithEmulatedRecursion.QuickSort(array, 0, array.Length - 1);
+
+            Console.WriteLine("Завершена успешно" + "\n");
+
+            Console.WriteLine("Сортировка через рекурсию");
+
+            array = new int[Count];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = array.Length - 1 - i;
+            }
 
             QuickSortClass.Quicksort(array, 0, array.Length - 1);
 
-            foreach (var num in array)
-            {
-                Console.Write(num + " , ");
-            }
-        }
-    }
-    static class QuickSortClass
-    {
-        static int Partition(int[] array, int start, int end)
-        {
-            int temp;
-            int marker = start;
 
-            for (int i = start; i < end; i++)
-            {
-                if (array[i] < array[end])
-                {
-                    temp = array[marker];
-                    array[marker] = array[i];
-                    array[i] = temp;
-                    marker++;
-                }
-            }
 
-            temp = array[marker];
-            array[marker] = array[end];
-            array[end] = temp;
-            return marker;
-        }
 
-        public static void Quicksort(int[] array, int start, int end)
-        {
-            if (start >= end)
-                return;
 
-            int pivot = Partition(array, start, end);
-            Quicksort(array, start, pivot - 1);
-            Quicksort(array, pivot + 1, end);
+
+
+            Console.WriteLine("АХАХАХАХ!!!");
+
+            Console.ReadKey();
         }
     }
 }
